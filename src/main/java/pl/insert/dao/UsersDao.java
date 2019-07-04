@@ -1,3 +1,5 @@
+//https://www.baeldung.com/hibernate-entitymanager
+
 package pl.insert.dao;
 
 import pl.insert.hibernate.HibernateUtil;
@@ -13,6 +15,27 @@ import java.util.List;
 
 
 public class UsersDao {
+
+//    public List<User> getEmployeeList() {
+//
+//        Session session = null;
+//        List<User> empList = null;
+//        try {
+//            session = HibernateUtil.getSession();
+//            String queryStr = "from " + User.class.getName();
+//            Query query = session.createQuery(queryStr);
+//            empList = query.list();
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            // handle exception here
+//        } finally {
+//            try {
+//                if (session != null) session.close();
+//            } catch (Exception ex) {
+//            }
+//        }
+//        return empList;
+//    }
 
     public List<User> getEmployeeList() {
 
@@ -34,6 +57,8 @@ public class UsersDao {
         }
         return empList;
     }
+
+
 
     public User getEmployeeById(Long empId) {
 
@@ -66,13 +91,6 @@ public class UsersDao {
     public User insertUser(User user) {
         //TransactionTemplate.execute(session -> session.save(emp));
 
-//        return TransactionTemplate.execute(new TransactionCallback(){
-//            public User doInTransaction(Session session){
-//                session.save(user);
-//                return user;
-//            }
-//        });
-
         return TransactionTemplate.execute(new TransactionCallback(){
             public User doInTransaction(EntityManager entityManager){
                 entityManager.persist(user);
@@ -83,61 +101,38 @@ public class UsersDao {
     }
 
 
-//
-//    public User deleteEmployee(User user) {
-//        //TransactionTemplate.execute(session -> session.save(emp));
-//
-//        return TransactionTemplate.execute(new TransactionCallback(){
-//            public User doInTransaction(Session session){
-//                session.delete(user);
-//                return user;
-//            }
-//        });
-//
-//    }
 
-//    public void deleteEmployee(User emp) {
-//
-//        Session session = null;
-//        Transaction transaction = null;
-//        try {
-//            session = HibernateUtil.getSession();
-//            transaction = session.beginTransaction();
-//            session.delete(emp);
-//            transaction.commit();
-//            System.out.println("deleted employee: " + emp.getName());
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            // handle exception here
-//            if (transaction != null) transaction.rollback();
-//        } finally {
-//            try {
-//                if (session != null) session.close();
-//            } catch (Exception ex) {
-//            }
-//        }
-//    }
+    public User deleteUser(User user) {
+        //TransactionTemplate.execute(session -> session.save(emp));
 
 
-//entity menager zamiast session
-    // hibewrnate entity menager -> persistance xml -> obiekt factory -> entity menager
-    // z duzego kodu zostana dwie albo trzy linijki
-    // zmiany w transaction template
-    //zmieni sie entity menager
+
+        return TransactionTemplate.execute(new TransactionCallback(){
+            public User doInTransaction(EntityManager entityManager){
+                entityManager.remove(
+                        entityManager.contains(user) ? user : entityManager.merge(user)
+                );
+                return user;
+            }
+        });
+
+    }
+
+
+
 
     public static void main(String[] a) {
 
         UsersDao empDao = new UsersDao();
 
         User user = new User();
-        //user.setId(2);
-        user.setName("Nataraja G");
-        user.setSurname("Documentation");
+        user.setId(4);
+        user.setName("Babu");
+        user.setSurname("Security");
 
-        //User user2 = (User) empDao.insertEmployee(emp);
-        System.out.println(empDao.insertUser(user));
-        //System.out.println(empDao.deleteEmployee(user));
-        //empDao.insertEmployee(user);
+        //System.out.println(empDao.insertUser(user));
+        System.out.println(empDao.deleteUser(user));
+
 
 
         System.out.println("---------------------------");
