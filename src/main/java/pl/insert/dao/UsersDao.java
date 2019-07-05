@@ -3,13 +3,11 @@
 
 package pl.insert.dao;
 
-import pl.insert.hibernate.HibernateUtil;
+
 import pl.insert.hibernate.TransactionCallback;
 import pl.insert.hibernate.TransactionTemplate;
 import pl.insert.model.User;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -17,32 +15,13 @@ import java.util.List;
 
 public class UsersDao {
 
-//    public List<User> getEmployeeList() {
-//
-//        Session session = null;
-//        List<User> empList = null;
-//        try {
-//            session = HibernateUtil.getSession();
-//            String queryStr = "from " + User.class.getName();
-//            Query query = session.createQuery(queryStr);
-//            empList = query.list();
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            // handle exception here
-//        } finally {
-//            try {
-//                if (session != null) session.close();
-//            } catch (Exception ex) {
-//            }
-//        }
-//        return empList;
-//    }
 
-    public List<User> getEmployeeList() {
+
+    public List<?> getEmployeeList() {
 
         return TransactionTemplate.execute(new TransactionCallback(){
            public Object doInTransaction(EntityManager entityManager){
-               List<User> users = entityManager.createQuery("SELECT user FROM User user").getResultList();
+               List<?> users = entityManager.createQuery("SELECT user FROM User user").getResultList();
                return users;
            }
         });
@@ -81,8 +60,6 @@ public class UsersDao {
     public User deleteUser(User user) {
         //TransactionTemplate.execute(session -> session.save(emp));
 
-
-
         return TransactionTemplate.execute(new TransactionCallback(){
             public User doInTransaction(EntityManager entityManager){
                 entityManager.remove(
@@ -112,6 +89,6 @@ public class UsersDao {
         //System.out.println(userDao.deleteUser(user));
         //System.out.println(userDao.getUserById((long) 12));
         System.out.println(userDao.getEmployeeList());
-        
+
     }
 }
