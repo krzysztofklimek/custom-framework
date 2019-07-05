@@ -1,4 +1,5 @@
 //https://www.baeldung.com/hibernate-entitymanager
+//https://www.youtube.com/watch?v=Yv2xctJxE-w&list=PL4AFF701184976B25&index=1
 
 package pl.insert.dao;
 
@@ -39,52 +40,27 @@ public class UsersDao {
 
     public List<User> getEmployeeList() {
 
-        Session session = null;
-        List<User> empList = null;
-        try {
-            session = HibernateUtil.getSession();
-            String queryStr = "from " + User.class.getName();
-            Query query = session.createQuery(queryStr);
-            empList = query.list();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            // handle exception here
-        } finally {
-            try {
-                if (session != null) session.close();
-            } catch (Exception ex) {
-            }
-        }
-        return empList;
+        return TransactionTemplate.execute(new TransactionCallback(){
+           public Object doInTransaction(EntityManager entityManager){
+               List<User> users = entityManager.createQuery("SELECT user FROM User user").getResultList();
+               return users;
+           }
+        });
+
     }
 
 
+    public User getUserById(Long userId){
 
-    public User getEmployeeById(Long empId) {
-
-        Session session = null;
-        User emp = null;
-        try {
-            session = HibernateUtil.getSession();
-            String queryStr = "select emp from User emp";
-            emp = session.get(User.class, empId);
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            // handle exception here
-        } finally {
-            try {
-                if (session != null) session.close();
-            } catch (Exception ex) {
+        return TransactionTemplate.execute(new TransactionCallback() {
+            @Override
+            public Object doInTransaction(EntityManager entityManager) {
+                User user =entityManager.find(User.class, new Long(userId));
+                return user;
             }
-        }
-        return emp;
+        });
+
     }
-
-
-
-
-
 
 
 
@@ -123,39 +99,19 @@ public class UsersDao {
 
     public static void main(String[] a) {
 
-        UsersDao empDao = new UsersDao();
+        UsersDao userDao = new UsersDao();
 
         User user = new User();
         user.setId(4);
         user.setName("Babu");
         user.setSurname("Security");
 
+
+
         //System.out.println(empDao.insertUser(user));
-        System.out.println(empDao.deleteUser(user));
-
-
-
-        System.out.println("---------------------------");
-
-//        List<User> empList = empDao.getEmployeeList();
-//        System.out.println("emp size: " + empList.size());
-//        empList.stream().forEach(System.out::println);
-//
-//        System.out.println("---------------------------");
-//
-//        User empObj = empDao.getEmployeeById(emp.getId());
-//        System.out.println(empObj);
-//
-//        System.out.println("---------------------------");
-//        empDao.deleteEmployee(empObj);
-//        //empDao.deleteEmployee(empObj);
-//
-//        System.out.println("---------------------------");
-//
-//        empList = empDao.getEmployeeList();
-//        System.out.println("emp size: " + empList.size());
-//        empList.stream().forEach(System.out::println);
-//
-//        System.out.println("---------------------------");
+        //System.out.println(userDao.deleteUser(user));
+        //System.out.println(userDao.getUserById((long) 12));
+        System.out.println(userDao.getEmployeeList());
+        
     }
 }
