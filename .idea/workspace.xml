@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36b34eb4-7895-45e2-b044-e38c375f6287" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/InterfaceUserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/ProxyUserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/RealUserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/insert/proxy/Dog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/insert/proxy/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/insert/proxy/RealDog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/insert/proxy/TransactionalDog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/insert/dao/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/insert/dao/UsersDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/insert/dao/UsersDao$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/insert/dao/UsersDao$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/insert/dao/UsersDao$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/insert/dao/UsersDao$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/insert/dao/UsersDao$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/insert/dao/UsersDao$3.class" afterDir="false" />
@@ -37,39 +43,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/InterfaceUserDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/dao/UsersDao.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/proxy/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+            <state relative-caret-position="17">
+              <caret line="1" column="98" selection-start-line="1" selection-start-column="98" selection-end-line="1" selection-end-column="98" />
               <folding>
-                <element signature="e#0#2475#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#0#26#1" expanded="true" />
+                <element signature="e#0#464#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/hibernate/TransactionCallback.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/ProxyUserDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+            <state relative-caret-position="425">
+              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#215#216#0" expanded="true" />
+                <element signature="e#261#262#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/hibernate/TransactionTemplate.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/RealUserDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="255">
+              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#246#247#0" expanded="true" />
+                <element signature="e#270#271#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,6 +139,15 @@
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/pl/insert/hibernate/TransactionTemplate.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/insert/dao/UsersDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/proxy/Animal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/proxy/RealDog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/proxy/Dog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/proxy/ProxyDog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/proxy/TransactionalDog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/InterfaceUserDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/ProxyUserDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/proxy/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/RealUserDao.java" />
       </list>
     </option>
   </component>
@@ -133,7 +159,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1928" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -193,20 +219,14 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="insert" type="462c0819:PsiDirectoryNode" />
-              <item name="hibernate" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mvn_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mvn_project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="daoProxy" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -215,7 +235,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hibernate_test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../anonimous" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -244,10 +264,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.UsersDao (1)">
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.insert.Main" />
       <module name="mvn_project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pl.insert.proxy.Main" />
+      <module name="mvn_project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.insert.proxy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -293,6 +326,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.UsersDao (1)" />
         <item itemvalue="Application.UsersDao" />
         <item itemvalue="Application.Main" />
@@ -312,17 +346,19 @@
       <workItem from="1562158196251" duration="10141000" />
       <workItem from="1562222469581" duration="32863000" />
       <workItem from="1562309581792" duration="14634000" />
+      <workItem from="1562570326453" duration="621000" />
+      <workItem from="1562674001988" duration="20000" />
+      <workItem from="1562674033536" duration="7947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57638000" />
+    <option name="totallyTimeSpent" value="66226000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17910448" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18443497" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -330,10 +366,9 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Persistence" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Java Enterprise" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2751896" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2751896" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3488624" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -345,11 +380,12 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32936078" />
+      <window_info anchor="bottom" id="Java Enterprise" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info active="true" anchor="right" id="Database" order="4" visible="true" weight="0.16044776" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.16044776" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Maven" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
@@ -393,16 +429,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/service/Service.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/annotation/Qualifier.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/dao/CompanyDAO.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/dao/AccountDAO.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/service/ServiceImpl2.java">
@@ -646,13 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvn_project.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://09884dae-f7c7-4bb1-b751-b6f52869bbfb/schema/mvn_db/table/users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="c8e41a10-8fc2-4e5c-b4b2-51449c100419">
@@ -672,10 +695,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://09884dae-f7c7-4bb1-b751-b6f52869bbfb/schema/mvn_db/table/dogs">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="c8e41a10-8fc2-4e5c-b4b2-51449c100419">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/dao/AccountDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/hibernate/TransactionTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="561">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -692,23 +731,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://09884dae-f7c7-4bb1-b751-b6f52869bbfb/schema/mvn_db/table/dogs">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="c8e41a10-8fc2-4e5c-b4b2-51449c100419">
-          <filtering>
-            <filter text="" />
-          </filtering>
+    <entry file="file://$PROJECT_DIR$/mvn_project.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/proxy/RealDog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="e#131#132#0" expanded="true" />
+            <element signature="e#155#156#0" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/proxy/Dog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/proxy/TransactionalDog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#139#140#0" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/dao/UsersDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        <state relative-caret-position="791">
+          <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
           <folding>
-            <element signature="e#0#2475#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#0#26#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/InterfaceUserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/RealUserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#246#247#0" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/daoProxy/ProxyUserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/insert/proxy/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="98" selection-start-line="1" selection-start-column="98" selection-end-line="1" selection-end-column="98" />
+          <folding>
+            <element signature="e#0#464#0" expanded="true" />
           </folding>
         </state>
       </provider>
