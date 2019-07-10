@@ -11,6 +11,10 @@ public class ProxyUserDao implements InterfaceUserDao {
 
     private final  RealUserDao realUserDao;
 
+    //to chyba nie powinnno być public
+    public static ThreadLocal<EntityManager> threadLocalStorage = new ThreadLocal<EntityManager>();
+
+
     public ProxyUserDao(RealUserDao realUserDao) {
         this.realUserDao = realUserDao;
     }
@@ -19,13 +23,23 @@ public class ProxyUserDao implements InterfaceUserDao {
     @Override
     public void save(User user) {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JPAService");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
+        try{
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JPAService");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
 
-        realUserDao.save(user);
+            threadLocalStorage.set(entityManager);
 
-        entityManager.getTransaction().commit();
+            realUserDao.save(user);
+
+            entityManager.getTransaction().commit();
+
+        }catch(Exception e){}
+        finally {
+            threadLocalStorage.remove();
+        }
+
 
     }
+
 }

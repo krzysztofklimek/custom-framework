@@ -1,5 +1,6 @@
 //https://www.javatpoint.com/proxy-pattern
 //https://www.teamten.com/lawrence/programming/avoid-fields-for-communication-between-methods.html
+//https://blog.appoptics.com/introduction-to-java-threadlocal-storage/
 
 package pl.insert.proxy;
 
@@ -11,12 +12,12 @@ public class Main {
 
         Dog realDog = new RealDog("aaa");
 
-        Dog dogRroxy = new TransactionalDog(realDog);
+        Dog dogProxy = new TransactionalDog(realDog);
 
 
-        Dog dogRroxyProxy = new TransactionalDog(dogRroxy);
+        Dog dogRroxyProxy = new TransactionalDog(dogProxy);
 
-        realDog.execute();
-
+        //realDog.execute();
+        dogProxy.execute();
     }
 }

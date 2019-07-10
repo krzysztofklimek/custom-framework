@@ -13,6 +13,7 @@ public class RealUserDao implements InterfaceUserDao {
 
     @Override
     public void save(User user) {
+        entityManager = ProxyUserDao.threadLocalStorage.get();
         entityManager.persist(user);
     }
 }
