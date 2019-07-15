@@ -1,6 +1,7 @@
 package pl.insert.daoProxy;
 
 
+import pl.insert.annotation.Transactional;
 import pl.insert.daoProxy.InterfaceUserDao;
 import pl.insert.hibernate.TransactionCallback;
 import pl.insert.hibernate.TransactionTemplate;
@@ -27,6 +28,10 @@ public class DynamicInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
+        if Transactional
+
+
+
         TransactionCallback<Object> transactionCallback = new TransactionCallback() {
             @Override
             public Object doInTransaction(EntityManager entityManager) throws InvocationTargetException, IllegalAccessException {
@@ -34,6 +39,10 @@ public class DynamicInvocationHandler implements InvocationHandler {
             }
         };
         return TransactionTemplate.execute(transactionCallback);
+    }
+
+    private boolean ifTransactional(){
+asdfasd
     }
 
 

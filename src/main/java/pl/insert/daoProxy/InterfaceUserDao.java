@@ -6,4 +6,5 @@ public interface InterfaceUserDao {
 
 
     void save(User user);
+    String test();
 }
