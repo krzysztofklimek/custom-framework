@@ -2,32 +2,57 @@ package pl.insert.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pl.insert.daoProxy.ThreadLocalManager;
 import pl.insert.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.lang.reflect.InvocationTargetException;
 
 public class TransactionTemplate {
 
 
-
-
-
-
-    public static <T> T execute(TransactionCallback transactionCallback) {
+    public static <T> T execute(TransactionCallback transactionCallback) throws InvocationTargetException, IllegalAccessException {
 
         T t = null;
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JPAService");
         EntityManager entityManager= entityManagerFactory.createEntityManager();
+        try{
+            ThreadLocalManager.setThreadLocal(entityManager);
+            entityManager.getTransaction().begin();
 
-        entityManager.getTransaction().begin();
-        t = (T) transactionCallback.doInTransaction(entityManager);
-        entityManager.getTransaction().commit();
+            t = (T) transactionCallback.doInTransaction(entityManager);
+
+            entityManager.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            entityManager.close();
+            ThreadLocalManager.removeThreadLocal();
+        }
+
 
         return t;
     }
+
+
+
+
+//    public static <T> T execute(TransactionCallback transactionCallback) {
+//
+//        T t = null;
+//
+//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JPAService");
+//        EntityManager entityManager= entityManagerFactory.createEntityManager();
+//
+//        entityManager.getTransaction().begin();
+//        t = (T) transactionCallback.doInTransaction(entityManager);
+//        entityManager.getTransaction().commit();
+//
+//        return t;
+//    }
 
 
 

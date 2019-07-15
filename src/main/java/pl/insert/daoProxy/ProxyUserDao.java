@@ -11,7 +11,6 @@ public class ProxyUserDao implements InterfaceUserDao {
 
     private final  RealUserDao realUserDao;
 
-    //to chyba nie powinnno być public
     public static ThreadLocal<EntityManager> threadLocalStorage = new ThreadLocal<EntityManager>();
 
 

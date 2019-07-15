@@ -10,6 +10,7 @@ import pl.insert.model.User;
 
 
 import javax.persistence.EntityManager;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 
@@ -17,7 +18,7 @@ public class UsersDao {
 
 
 
-    public List<?> getEmployeeList() {
+    public List<?> getEmployeeList() throws InvocationTargetException, IllegalAccessException {
 
         return TransactionTemplate.execute(new TransactionCallback(){
            public Object doInTransaction(EntityManager entityManager){
@@ -29,7 +30,7 @@ public class UsersDao {
     }
 
 
-    public User getUserById(Long userId){
+    public User getUserById(Long userId) throws InvocationTargetException, IllegalAccessException {
 
         return TransactionTemplate.execute(new TransactionCallback() {
             @Override
@@ -43,7 +44,7 @@ public class UsersDao {
 
 
 
-    public User insertUser(User user) {
+    public User insertUser(User user) throws InvocationTargetException, IllegalAccessException {
         //TransactionTemplate.execute(session -> session.save(emp));
 
         return TransactionTemplate.execute(new TransactionCallback(){
@@ -57,7 +58,7 @@ public class UsersDao {
 
 
 
-    public User deleteUser(User user) {
+    public User deleteUser(User user) throws InvocationTargetException, IllegalAccessException {
         //TransactionTemplate.execute(session -> session.save(emp));
 
         return TransactionTemplate.execute(new TransactionCallback(){
@@ -74,7 +75,7 @@ public class UsersDao {
 
 
 
-    public static void main(String[] a) {
+    public static void main(String[] a) throws InvocationTargetException, IllegalAccessException {
 
         UsersDao userDao = new UsersDao();
 
