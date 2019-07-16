@@ -1,36 +1,52 @@
 package pl.insert.daoProxy;
 
+import pl.insert.annotation.Autowired;
+import pl.insert.annotation.Qualifier;
 import pl.insert.annotation.Transactional;
 import pl.insert.model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
 public class RealUserDao implements InterfaceUserDao {
 
 
+    @Autowired
+    @Qualifier(name = "entityManager")
     private EntityManager entityManager;
-
 
 
     @Override
     @Transactional
-    public void save(User user) {
-        //entityManager = ProxyUserDao.threadLocalStorage.get();
-        entityManager = ThreadLocalManager.getThreadLocal();
+    public void persist(User user) {
         entityManager.persist(user);
+    }
+
+    @Override
+    @Transactional
+    public List<?> getUsersList() {
+        List<?> users = entityManager.createQuery("SELECT user FROM User user").getResultList();
+        return users;
+    }
+
+    @Override
+    @Transactional
+    public User getUserById(Long userId) {
+        User user = entityManager.find(User.class, Long.valueOf(userId));
+        return user;
+    }
+
+    @Override
+    @Transactional
+    public void deleteUser(User user) {
+        entityManager.remove(entityManager.contains(user) ? user : entityManager.merge(user));
     }
 
 
     @Override
-    public String test(){
+    public String test() {
         return "testowa metoda bez interakcji z bazą danych";
     }
-
-
-
-
-
-
-
 
 }

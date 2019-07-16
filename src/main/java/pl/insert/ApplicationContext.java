@@ -3,16 +3,13 @@ package pl.insert;
 import pl.insert.annotation.Autowired;
 import pl.insert.annotation.Bean;
 import pl.insert.annotation.Qualifier;
+import pl.insert.annotation.Transactional;
 import pl.insert.configuration.Configuration;
+import pl.insert.daoProxy.DynamicInvocationHandler;
+import pl.insert.daoProxy.InterfaceUserDao;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.*;
+import java.util.*;
 
 public class ApplicationContext {
 
@@ -23,37 +20,10 @@ public class ApplicationContext {
     private Class cls;
     private Map<String, Object> beansMap;
 
-
     public ApplicationContext(Class<?> cls) {
         this.cls = cls;
         beansMap = new HashMap<String, Object>();
     }
-
-    public Map getMap() {
-        return beansMap;
-    }
-
-
-//    public <R> R getBean(String nazwa, Class<R> ccc) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
-//
-//
-//        Constructor<?> ctor = cls.getConstructor();
-//        Object object = ctor.newInstance(new Object[] { });
-//
-//
-//        Method[] methods = pl.Configuration.class.getMethods();
-//        for (Method m : methods) {
-//            if (m.isAnnotationPresent(pl.Bean.class)) {
-//                pl.Bean ta = m.getAnnotation(pl.Bean.class);
-//                //System.out.println(ta.name());
-//
-//                if(ta.name().equals(nazwa))
-//                    return (R) m.invoke(object);
-//
-//            }
-//        }
-//        return null;
-//    }
 
 
     public Object getBean(String annotationName) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
@@ -74,24 +44,44 @@ public class ApplicationContext {
                 Object obj = m.invoke(object);
 
                 //DOSTAJĘ LISTE PÓL Z ADNOTACJA AUTOWIRED
-                List <Field> fields = getAutowiredField(obj);
+                List<Field> fields = getAutowiredField(obj);
 
-                if(fields != null) {
+                if (fields != null) {
                     for (Field f : fields) {
 
                         if (f != null) {
-                            //System.out.println(f.getName());
-                            //System.out.println(getQualifierName(f));
                             f.setAccessible(true);
                             f.set(obj, getBean(getQualifierName(f)));
                         }
                     }
                 }
+
+                // zamien obj na proxy(obj) jezeli ma @Transactional
+                if (isTranscational(obj))
+                    obj = makeObjectProxy(obj, m);
+
+
                 beansMap.put(annotationName, obj);
                 return obj;
             }
             return null;
         }
+    }
+
+    private boolean isTranscational(Object object) {
+        return Arrays.asList(object.getClass().getMethods()).stream().anyMatch(m -> m.isAnnotationPresent(Transactional.class));
+    }
+
+    private Object makeObjectProxy(Object obj, Method m) {
+
+        DynamicInvocationHandler dynamicInvocationHandler = new DynamicInvocationHandler(obj);
+
+        obj = Proxy.newProxyInstance(
+                m.getReturnType().getClassLoader(),
+                new Class[]{m.getReturnType()},
+                dynamicInvocationHandler);
+
+        return obj;
     }
 
 
@@ -114,7 +104,7 @@ public class ApplicationContext {
             if (f.isAnnotationPresent(Autowired.class))
                 resultList.add(f);
         }
-        if(resultList.size() != 0)
+        if (resultList.size() != 0)
             return resultList;
         else
             return null;
@@ -127,5 +117,9 @@ public class ApplicationContext {
             return qualifier.name();
         }
         return null;
+    }
+
+    public Map getMap() {
+        return beansMap;
     }
 }

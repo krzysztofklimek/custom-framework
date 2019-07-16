@@ -16,11 +16,9 @@ import java.lang.reflect.Method;
 public class DynamicInvocationHandler implements InvocationHandler {
 
 
-    private final InterfaceUserDao realUserDao;
+    private final Object realUserDao;
 
-    //public static ThreadLocal<EntityManager> threadLocalStorage = new ThreadLocal<EntityManager>();
-
-    public DynamicInvocationHandler (InterfaceUserDao realUserDao){
+    public DynamicInvocationHandler(Object realUserDao) {
         this.realUserDao = realUserDao;
     }
 
@@ -28,48 +26,30 @@ public class DynamicInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-        if Transactional
+
+        Method[] methods = this.realUserDao.getClass().getDeclaredMethods();
+
+        for (Method m : methods) {
 
 
+            //SPRAWDZA CZY W OGOLE ZNALAZŁO METODĘ Z TAKĄ NAZWĄ
+            if (m.getName().equals(method.getName())) {
 
-        TransactionCallback<Object> transactionCallback = new TransactionCallback() {
-            @Override
-            public Object doInTransaction(EntityManager entityManager) throws InvocationTargetException, IllegalAccessException {
-                return method.invoke(realUserDao, args);
+                //SPRAWDZA CZY JEST ADNOTACJA TRANSACTIONAL
+                if (!m.isAnnotationPresent(Transactional.class)) {
+                    return method.invoke(this.realUserDao, args);
+                } else {
+                    return TransactionTemplate.execute(new TransactionCallback() {
+                        @Override
+                        public Object doInTransaction(EntityManager entityManager) throws InvocationTargetException, IllegalAccessException {
+                            return method.invoke(realUserDao, args);
+                        }
+                    });
+                }
             }
-        };
-        return TransactionTemplate.execute(transactionCallback);
-    }
-
-    private boolean ifTransactional(){
-asdfasd
+        }
+        return null;
     }
 
 
-
-//    @Override
-//    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//
-//
-//        try{
-//            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JPAService");
-//            EntityManager entityManager = entityManagerFactory.createEntityManager();
-//            entityManager.getTransaction().begin();
-//
-//            threadLocalStorage.set(entityManager);
-//
-//            method.invoke(realUserDao, args);
-//
-//            entityManager.getTransaction().commit();
-//
-//            return "Success";
-//        }catch(Exception e){}
-//        finally {
-//            threadLocalStorage.remove();
-//        }
-//
-//
-//
-//        return "Failure";
-//    }
 }

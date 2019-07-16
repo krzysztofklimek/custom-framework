@@ -2,13 +2,15 @@ package pl.insert.configuration;
 
 
 import pl.insert.annotation.Bean;
-import pl.insert.dao.AccountDAO;
-import pl.insert.dao.AccountDAOImpl;
-import pl.insert.dao.CompanyDAO;
-import pl.insert.dao.CompanyDAOImpl;
+
+import pl.insert.daoProxy.EntityManagerProxy;
+import pl.insert.daoProxy.InterfaceUserDao;
+import pl.insert.daoProxy.RealUserDao;
 import pl.insert.service.Service;
 import pl.insert.service.ServiceImpl;
 import pl.insert.service.ServiceImpl2;
+
+import javax.persistence.EntityManager;
 
 public class Configuration {
 
@@ -23,13 +25,26 @@ public class Configuration {
         return new ServiceImpl2();
     }
 
-    @Bean(name="companyDAO")
-    public CompanyDAO metoda3(){
-        return new CompanyDAOImpl();
+//    @Bean(name="companyDAO")
+//    public CompanyDAO metoda3(){
+//        return new CompanyDAOImpl();
+//    }
+//
+//    @Bean(name="accountDAO")
+//    public AccountDAO accountDAO(){
+//        return new AccountDAOImpl();
+//    }
+
+
+    @Bean(name="entityManager")
+    public EntityManager entityManager(){
+        return new EntityManagerProxy();
     }
 
-    @Bean(name="accountDAO")
-    public AccountDAO accountDAO(){
-        return new AccountDAOImpl();
+    @Bean(name="userDao")
+    public InterfaceUserDao userDao(){
+        return new RealUserDao();
     }
 }
+
+

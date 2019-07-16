@@ -6,8 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class ProxyUserDao implements InterfaceUserDao {
-
+//public class ProxyUserDao implements InterfaceUserDao {
+public class ProxyUserDao {
 
     private final  RealUserDao realUserDao;
 
@@ -19,7 +19,7 @@ public class ProxyUserDao implements InterfaceUserDao {
     }
 
 
-    @Override
+    //@Override
     public void save(User user) {
 
         try{
@@ -29,7 +29,7 @@ public class ProxyUserDao implements InterfaceUserDao {
 
             threadLocalStorage.set(entityManager);
 
-            realUserDao.save(user);
+            realUserDao.persist(user);
 
             entityManager.getTransaction().commit();
 
