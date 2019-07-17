@@ -3,9 +3,9 @@ package pl.insert.configuration;
 
 import pl.insert.annotation.Bean;
 
-import pl.insert.daoProxy.EntityManagerProxy;
-import pl.insert.daoProxy.InterfaceUserDao;
-import pl.insert.daoProxy.RealUserDao;
+import pl.insert.dao.UserDaoImpl;
+import pl.insert.proxy.EntityManagerProxy;
+import pl.insert.dao.UserDao;
 import pl.insert.service.Service;
 import pl.insert.service.ServiceImpl;
 import pl.insert.service.ServiceImpl2;
@@ -42,8 +42,8 @@ public class Configuration {
     }
 
     @Bean(name="userDao")
-    public InterfaceUserDao userDao(){
-        return new RealUserDao();
+    public UserDao userDao(){
+        return new UserDaoImpl();
     }
 }
 

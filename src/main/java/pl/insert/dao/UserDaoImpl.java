@@ -1,4 +1,4 @@
-package pl.insert.daoProxy;
+package pl.insert.dao;
 
 import pl.insert.annotation.Autowired;
 import pl.insert.annotation.Qualifier;
@@ -6,10 +6,9 @@ import pl.insert.annotation.Transactional;
 import pl.insert.model.User;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public class RealUserDao implements InterfaceUserDao {
+public class UserDaoImpl implements UserDao {
 
 
     @Autowired

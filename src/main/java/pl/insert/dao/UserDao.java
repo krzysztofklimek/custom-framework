@@ -1,10 +1,10 @@
-package pl.insert.daoProxy;
+package pl.insert.dao;
 
 import pl.insert.model.User;
 
 import java.util.List;
 
-public interface InterfaceUserDao {
+public interface UserDao {
 
 
     void persist(User user);

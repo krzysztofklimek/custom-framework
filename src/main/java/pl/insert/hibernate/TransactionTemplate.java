@@ -1,9 +1,6 @@
 package pl.insert.hibernate;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import pl.insert.daoProxy.ThreadLocalManager;
-import pl.insert.model.User;
+import pl.insert.proxy.ThreadLocalManager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

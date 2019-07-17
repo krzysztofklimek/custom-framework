@@ -1,14 +1,11 @@
-package pl.insert.daoProxy;
+package pl.insert.proxy;
 
 
 import pl.insert.annotation.Transactional;
-import pl.insert.daoProxy.InterfaceUserDao;
 import pl.insert.hibernate.TransactionCallback;
 import pl.insert.hibernate.TransactionTemplate;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

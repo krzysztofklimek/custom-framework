@@ -5,8 +5,7 @@ import pl.insert.annotation.Bean;
 import pl.insert.annotation.Qualifier;
 import pl.insert.annotation.Transactional;
 import pl.insert.configuration.Configuration;
-import pl.insert.daoProxy.DynamicInvocationHandler;
-import pl.insert.daoProxy.InterfaceUserDao;
+import pl.insert.proxy.DynamicInvocationHandler;
 
 import java.lang.reflect.*;
 import java.util.*;

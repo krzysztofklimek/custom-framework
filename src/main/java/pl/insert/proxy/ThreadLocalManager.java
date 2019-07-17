@@ -1,4 +1,4 @@
-package pl.insert.daoProxy;
+package pl.insert.proxy;
 
 import javax.persistence.EntityManager;
 

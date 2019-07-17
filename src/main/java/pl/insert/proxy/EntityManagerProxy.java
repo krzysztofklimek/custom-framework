@@ -1,6 +1,6 @@
-package pl.insert.daoProxy;
+package pl.insert.proxy;
 
-import pl.insert.model.User;
+import pl.insert.proxy.ThreadLocalManager;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
