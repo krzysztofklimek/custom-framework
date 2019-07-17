@@ -1,4 +1,4 @@
-package pl.insert;
+package pl.insert.context;
 
 import pl.insert.annotation.Autowired;
 import pl.insert.annotation.Bean;
